@@ -1,0 +1,26 @@
+.wp-caption {
+    max-width: 100%;
+}
+.wp-caption-text {
+
+}
+.sticky {
+
+}
+.gallery-caption {
+
+}
+.bypostauthor {
+
+}
+.alignright {
+    text-align: right;
+}
+.alignleft {
+    text-align: left;
+}
+.aligncenter {
+    text-align: center;
+}
+
+.screen-reader-text { display: none; }
