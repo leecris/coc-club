@@ -2,7 +2,10 @@
  * Created by Admin on 1/17/2017.
  */
 import React from 'react'
+
+// Import Components
 import SocialIcon from '../Socials/SocialIcon'
+
 class MenuBlock extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -29,7 +32,7 @@ class MenuBlock extends React.Component {
                 <div className="menu-left-i">
                     <div className="logo">
                         <a href="http://pluto.pinsupreme.com/">
-                            <img src={"static/images/clash-of-clans-update.png"} alt={""}/>
+                            <img src={"/static/images/clash-of-clans-update.png"} alt={""}/>
                             <span>Club</span>
                         </a>
                     </div>
@@ -51,37 +54,37 @@ class MenuBlock extends React.Component {
                                     <ul className="sub-menu">
                                         <li id="menu-item-1365"
                                             className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1365">
-                                            <a href="/strategies">Attack Strategies</a></li>
+                                            <a href="/videos/strategies">Attack Strategies</a></li>
                                         <li id="menu-item-332"
                                             className="menu-item menu-item-type-post_type menu-item-object-page menu-item-332">
-                                            <a href="/base-layouts">Base Layouts</a></li>
+                                            <a href="/videos/base-layouts">Base Layouts</a></li>
                                         <li id="menu-item-528"
                                             className="menu-item menu-item-type-post_type menu-item-object-page menu-item-528">
-                                            <a href="/tutorials">Tutorials</a></li>
+                                            <a href="/videos/tutorials">Tutorials</a></li>
                                         <li id="menu-item-1420"
                                             className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1420">
-                                            <a href="/tips-and-tricks">Tips & Tricks</a></li>
+                                            <a href="/videos/tips-and-tricks">Tips & Tricks</a></li>
                                     </ul>
                                 </li>
                                 <li id="menu-item-253"
                                     className="menu-item menu-item-type-custom menu-item-object-custom menu-item-253">
-                                    <a href="/top-clans" ref="menuAnchor" onClick={this.anchorClickHandler}>Top Clans</a>
+                                    <a href="/top-clans" ref="menuAnchor">Top Clans</a>
                                 </li>
                                 <li id="menu-item-312"
                                     className="menu-item menu-item-type-custom menu-item-object-custom menu-item-312">
-                                    <a href="/top-players" ref="menuAnchor" onClick={this.anchorClickHandler}>Top Players</a>
+                                    <a href="/top-players" ref="menuAnchor">Top Players</a>
                                 </li>
                                 <li id="menu-item-301"
                                     className="menu-item menu-item-type-custom menu-item-object-custom menu-item-301">
-                                    <a href="/builders" ref="menuAnchor" onClick={this.anchorClickHandler}>Builders</a>
+                                    <a href="/builders" ref="menuAnchor">Builders</a>
                                 </li>
                                 <li id="menu-item-311"
                                     className="menu-item menu-item-type-custom menu-item-object-custom menu-item-311">
-                                    <a href="/blog" ref="menuAnchor" onClick={this.anchorClickHandler}>Update & News</a>
+                                    <a href="/blog" ref="menuAnchor">Update & News</a>
                                 </li>
                                 <li id="menu-item-305"
                                     className="menu-item menu-item-type-custom menu-item-object-custom menu-item-305">
-                                    <a href="/about" ref="menuAnchor" onClick={this.anchorClickHandler}>About</a>
+                                    <a href="/about" ref="menuAnchor">About</a>
                                 </li>
                             </ul>
                         </div>

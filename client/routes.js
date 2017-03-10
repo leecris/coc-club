@@ -20,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Video/pages/VideoListPage');
   require('./modules/Cocapi/pages/CocapiTopClansPage');
+  require('./modules/Cocapi/pages/CocapiClanDetailPage');
 }
 
 // react-router setup with code-splitting
@@ -42,10 +43,26 @@ export default (
       }}
     />
     <Route
+      path="/videos/:category"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Video/pages/VideoListPage').default);
+        });
+      }}
+    />
+    <Route
       path="/top-clans"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Cocapi/pages/CocapiTopClansPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/clan/:tag"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Cocapi/pages/CocapiClanDetailPage').default);
         });
       }}
     />

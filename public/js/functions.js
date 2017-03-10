@@ -28,10 +28,10 @@
                 'isOriginLeft': is_origin_left,
                 'sortAscending': false,
                 'transitionDuration': '0.5s',
-                'getSortData': {
-                    views: '[data-total-views] parseInt',
-                    likes: '[data-total-likes] parseInt',
-                },
+                // 'getSortData': {
+                //     views: '[data-total-views] parseInt',
+                //     likes: '[data-total-likes] parseInt',
+                // },
             });
             $('.index-isotope').addClass('isotope-active');
             // init isotope
@@ -110,7 +110,7 @@
     // Document Ready functions
     $(document).ready(function() {
 
-        $.fn.osetin_infinite_scroll.init_infinite_scroll();
+        //$.fn.osetin_infinite_scroll.init_infinite_scroll();
 
         // If there is a qr-code generator button - init it
         if($('.single-post-top-qr').length){

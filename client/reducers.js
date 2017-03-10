@@ -8,11 +8,13 @@ import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
 import intl from './modules/Intl/IntlReducer';
 import cocapi from './modules/Cocapi/CocapiReducer';
+import video from './modules/Video/VideoReducer'
 
 // Combine all reducers into one root reducer
 export default combineReducers({
   app,
   posts,
   intl,
-  cocapi
+  cocapi,
+  video
 });

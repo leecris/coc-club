@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors'
+
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 
 // Webpack Requirements
@@ -33,7 +34,9 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
+import postsRoute from './routes/post.routes';
+import cocapiRoute from './routes/cocapi.routes'
+import videoRoute from './routes/video.routes'
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -58,7 +61,9 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
 app.use('/static',Express.static(path.resolve(__dirname, '../public')));
-app.use('/api', posts);
+app.use('/api', postsRoute);
+app.use('/cocapi',cocapiRoute);
+app.use('/videoapi',videoRoute);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -99,8 +104,8 @@ const renderFullPage = (html, initialState) => {
         <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>
         <![endif]-->
 
-        <script src="static/js/jquery.js"></script>
-        <script src="static/js/jquery-migrate.min.js"></script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/jquery-migrate.min.js"></script>
         <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"
                 data-pin-build="parsePinBtns"></script>
         <script>
@@ -111,15 +116,15 @@ const renderFullPage = (html, initialState) => {
           var sb_instagram_js_options = {"sb_instagram_at": "4267003179.3a81a9f.015adb814a304da58bb181123dcb0095"};
           /* ]]> */
         </script>
-        <link rel="stylesheet" href="static/css/arve-public.css"/>
-        <link rel="stylesheet" href="static/css/sb-instagram.css"/>
-        <link rel="stylesheet" href="static/css/magnific-popup.css"/>
-        <link rel="stylesheet" href="static/css/main_less_blue_sky.css"/>
-        <link rel="stylesheet" href="static/css/owl.carousel.css"/>
-        <link rel="stylesheet" href="static/css/style.css"/>
+        <link rel="stylesheet" href="/static/css/arve-public.css"/>
+        <link rel="stylesheet" href="/static/css/sb-instagram.css"/>
+        <link rel="stylesheet" href="/static/css/magnific-popup.css"/>
+        <link rel="stylesheet" href="/static/css/main_less_blue_sky.css"/>
+        <link rel="stylesheet" href="/static/css/owl.carousel.css"/>
+        <link rel="stylesheet" href="/static/css/style.css"/>
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        <link rel="shortcut icon" href="static/favicon.ico" type="image/png" />
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/png" />
       </head>
       <body class="home page page-template page-template-page-masonry-condensed page-template-page-masonry-condensed-php menu-position-left no-sidebar not-wrapped-widgets with-infinite-scroll page-fluid-width">
         <div id="app">${html}</div>
@@ -142,17 +147,16 @@ const renderFullPage = (html, initialState) => {
           //]]>` : ''}
         </script>
         
-        <script src="static/js/sb-instagram.js"></script>
-        <script src="static/js/jquery.magnific-popup.min.js"></script>
-        <script src="static/js/jquery.flexslider.min.js"></script>
-        <script src="static/js/jquery.ba-throttle-debounce.min.js"></script>
-        <script src="static/js/imagesloaded.pkgd.min.js"></script>
-        <script src="static/js/isotope.pkgd.min.js"></script>
-        <script src="static/js/jquery.mousewheel.js"></script>
-        <script src="static/js/perfect-scrollbar.js"></script>
-        <script src="static/js/owl.carousel.min.js"></script>
-        <script src="static/js/menu.js"></script>
-        
+        <script src="/static/js/sb-instagram.js"></script>
+        <script src="/static/js/jquery.magnific-popup.min.js"></script>
+        <script src="/static/js/jquery.flexslider.min.js"></script>
+        <script src="/static/js/jquery.ba-throttle-debounce.min.js"></script>
+        <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+        <script src="/static/js/isotope.pkgd.min.js"></script>
+        <script src="/static/js/jquery.mousewheel.js"></script>
+        <script src="/static/js/perfect-scrollbar.js"></script>
+        <script src="/static/js/owl.carousel.min.js"></script>
+        <script src="/static/js/menu.js"></script>     
         
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/vendor.js'] : '/vendor.js'}'></script>
         <script src='${process.env.NODE_ENV === 'production' ? assetsManifest['/app.js'] : '/app.js'}'></script>
@@ -171,6 +175,8 @@ const renderError = err => {
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res, next) => {
   match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     if (err) {
       return res.status(500).end(renderError(err));
     }
@@ -195,8 +201,7 @@ app.use((req, res, next) => {
           </Provider>
         );
         const finalState = store.getState();
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
         res
           .set('Content-Type', 'text/html')
           .status(200)

@@ -5,56 +5,59 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 // Import Actions
-import { getTopClansRequest } from '../../Cocapi/CocapiActions';
+import { fetchTopClans,fetchClansIfNeeded } from '../../Cocapi/CocapiActions';
 
 // Import Selectors
 import { getClans } from '../../Cocapi/CocapiReducer';
 
-class TopClans extends React.Component {
-  componentWillMount() {
-    // let cocApi = clashApi({
-    //   token: apiConfig.token
-    // });
-    // cocApi
-    //   .clans()
-    //   .withLimit(2)
-    //   .withWarFrequency('always')
-    //   .withMinMembers(25)
-    //   .fetch()
-    //   .then(response => console.log(response))
-    //   .catch(err => console.log(err))
-  }
+// Import Components
+import ClanItem from '../components/ClanItem'
 
-  render () {
-    return (
-      <div className="top-clans">
-        <h1>top-clans</h1>
-      </div>
-    )
+class TopClans extends React.Component {
+  constructor(props,context) {
+    super(props,context)
+  }
+  componentWillMount() {
+
   }
   componentDidMount() {
     let options = {
-      name: "kho mau"
+      name: "kho mau",
+      limit: 2
     }
-    this.props.dispatch(getTopClansRequest());
+    this.props.dispatch(fetchClansIfNeeded(options));
+  }
+  componentDidUpdate(prevProps) {
+    // if (this.props.isFetching !== prevProps.isFetching) {
+    //    const { dispatch } = this.props
+    //    dispatch(fetchClansIfNeeded())
+    // }
+  }
+  render () {
+    const { items } = this.props
+    return (
+      <div className="top-clans">
+        <h1>Top-clans</h1>
+        {items.map((item, i) =>
+            <ClanItem key={i} item={item}/>
+          )
+        }
+      </div>
+    )
   }
 }
 
 // Retrieve data from store as props
 function mapStateToProps(state) {
   return {
-    clans: getClans(state),
+    isFetching: state.cocapi.isFetching,
+    lastUpdated: state.cocapi.lastUpdated,
+    items: state.cocapi.items,
   };
 }
 
 TopClans.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    clanLevel: PropTypes.number.isRequired,
-    members: PropTypes.number.isRequired,
-  })).isRequired,
+  items: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 

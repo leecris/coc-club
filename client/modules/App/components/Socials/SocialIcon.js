@@ -7,7 +7,7 @@ class SocialIcon extends React.Component {
     render() {
         return (
             <a className={this.props.class} href={this.props.href}>
-                <img src={`static/images/socialicons/${this.props.pixelWidth}px/${this.props.img}`} alt={this.props.alt}/>
+                <img src={`/static/images/socialicons/${this.props.pixelWidth}px/${this.props.img}`} alt={this.props.alt}/>
             </a>
         )
     }

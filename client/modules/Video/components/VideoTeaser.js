@@ -1,5 +1,7 @@
 import React from 'react'
-import SocialShare from '../Socials/SocialShare'
+
+// Import Components
+import SocialShare from '../../App/components/Socials/SocialShare'
 
 class VideoTeaser extends React.Component {
     constructor(props, context) {
@@ -7,7 +9,6 @@ class VideoTeaser extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         let baseUrl = window.location.protocol + '//' + window.location.hostname + '/';
         return (
             <div className="item-isotope filter-cat-6  format-standard " data-post-id={this.props.id} data-total-likes="3199" data-total-views="34,616">
@@ -21,7 +22,7 @@ class VideoTeaser extends React.Component {
                                 <div className="os_social">
                                     <SocialShare coreLink="http://www.facebook.com/sharer.php"
                                                  postLink={baseUrl} anchorClass="os_social_facebook_share"
-                                                 imgSrc="/images/socialicons/facebook.png"/>
+                                                 imgSrc="/static/images/socialicons/facebook.png"/>
                                     <a className="os_social_twitter_share"
                                        href="http://twitter.com/share?url=http://pluto.pinsupreme.com/youtube-video-embed/&amp;text=YouTube+video+embed"
                                        target="_blank"><img
@@ -31,32 +32,32 @@ class VideoTeaser extends React.Component {
                                     className="os_social_pinterest_share" data-pin-custom="true"
                                     target="_blank"
                                     href="//www.pinterest.com/pin/create/button/?url=http://pluto.pinsupreme.com/youtube-video-embed/&amp;media=http://pluto.pinsupreme.com/wp-content/uploads/2014/04/AdobeStock_114425493.jpg&amp;description=YouTube+video+embed"><img
-                                    src="/images/socialicons/pinterest.png"
+                                    src="/static/images/socialicons/pinterest.png"
                                     title="Pinterest" className="os_social" alt="Pin on Pinterest"/></a><a
                                     className="os_social_linkedin_share"
                                     href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://pluto.pinsupreme.com/youtube-video-embed/"
                                     target="_blank"><img
-                                    src="/images/socialicons/linkedin.png"
+                                    src="/static/images/socialicons/linkedin.png"
                                     title="Linkedin" className="os_social" alt="Share on LinkedIn"/></a><a
                                     className="os_social_google_share"
                                     href="https://plus.google.com/share?url=http://pluto.pinsupreme.com/youtube-video-embed/"
                                     target="_blank"><img
-                                    src="/images/socialicons/google.png"
+                                    src="/static/images/socialicons/google.png"
                                     title="Google+" className="os_social"
                                     alt="Share on Google+"/></a><a className="os_social_email_share"
                                                                    href="mailto:?Subject=YouTube+video+embed&amp;Body=%20http://pluto.pinsupreme.com/youtube-video-embed/"><img
-                                    src="/images/socialicons/email.png"
+                                    src="/static/images/socialicons/email.png"
                                     title="Email" className="os_social"
                                     alt="Email this to someone"/></a><a
                                     className="os_social_vk_share"
                                     href="http://vkontakte.ru/share.php?url=http://pluto.pinsupreme.com/youtube-video-embed/"
                                     target="_blank"><img
-                                    src="/images/socialicons/vkontakte.png"
+                                    src="/static/images/socialicons/vkontakte.png"
                                     title="Vkontakte" className="os_social"
                                     alt="Share on Vkontakte"/></a><a className="os_social_ok_share"
                                                                      href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=http://pluto.pinsupreme.com/youtube-video-embed/"
                                                                      target="_blank"><img
-                                    src="/images/socialicons/ok.png"
+                                    src="/static/images/socialicons/ok.png"
                                     title="Odnoklassniki" className="os_social"
                                     alt="Share on Odnoklassniki"/></a></div>
                             </div>

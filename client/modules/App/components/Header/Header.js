@@ -16,7 +16,7 @@ class Header extends React.Component {
     }
     return (
       <div className="featured-carousel-w">
-        <img style={imgFull} className="full" src={"static/images/static_header.jpg"} alt=""/>
+        <img style={imgFull} className="full" src={"/static/images/static_header.jpg"} alt=""/>
         <div className="featured-carousel owl-carousel">
 
           {/*<article id="post-carousel-43"*/}
